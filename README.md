@@ -1,4 +1,4 @@
-# Projeto Raízes - Sistema de Back-End para Rede de Lanchonetes
+# Projeto Raízes do Nordeste - Sistema de Back-End para Rede de Lanchonetes
 
 Este projeto consiste no desenvolvimento do back-end para uma rede de lanchonetes, com foco principal na automação do fluxo de pedidos e pagamentos.
 
