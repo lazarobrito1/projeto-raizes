@@ -1,0 +1,444 @@
+{
+  "info": {
+    "_postman_id": "5926ba88-e6a9-4f12-aff9-8fb7eab6335e",
+    "name": "Sistema Pedidos",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "49408054",
+    "_collection_link": "https://go.postman.co/collection/49408054-5926ba88-e6a9-4f12-aff9-8fb7eab6335e?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Cadastro, atualização, login",
+      "item": [
+        {
+          "name": "Cadastrar",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nome\": \"test\",\r\n    \"login\": \"test01\",\r\n    \"senha\": \"12345\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/cliente/cadastrar",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "cliente",
+                "cadastrar"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Atualizar cadastro",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MDEiLCJyb2xlIjoiQ0xJRU5URSIsImlhdCI6MTc4MjY0OTY4OSwiZXhwIjoxNzgyNzM2MDg5fQ.Ti0dPhJ_THZHAdyscAmH9El9lOk8Iq_5oUJn52ZigUQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\" :\"11\",\r\n     \"nome\": \"test\",\r\n    \"login\": \"test01\",\r\n    \"senha\": \"1111\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/cliente/atualizar",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "cliente",
+                "atualizar"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Fazer login",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"login\": \"test01\",\r\n    \"senha\": \"12345\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Cdastro com erro",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nome\": \"test\",\r\n    \"login\": \"test01\",\r\n    \"senha\": \"12345\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/cliente/cadastrar",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "cliente",
+                "cadastrar"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login com erro",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"login\": \"test01\",\r\n    \"senha\": \"1234\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Produtos",
+      "item": [
+        {
+          "name": "Consultar Produtos",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MDEiLCJyb2xlIjoiQ0xJRU5URSIsImlhdCI6MTc4MjY0OTY4OSwiZXhwIjoxNzgyNzM2MDg5fQ.Ti0dPhJ_THZHAdyscAmH9El9lOk8Iq_5oUJn52ZigUQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/produtos/consultar?unidadeId=1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "produtos",
+                "consultar"
+              ],
+              "query": [
+                {
+                  "key": "unidadeId",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Consulta com erro",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MDEiLCJyb2xlIjoiQ0xJRU5URSIsImlhdCI6MTc4MjY0OTY4OSwiZXhwIjoxNzgyNzM2MDg5fQ.Ti0dPhJ_THZHAdyscAmH9El9lOk8Iq_5oUJn52ZigUQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/produtos/consultar?unidadeId=3",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "produtos",
+                "consultar"
+              ],
+              "query": [
+                {
+                  "key": "unidadeId",
+                  "value": "3"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Pedidos",
+      "item": [
+        {
+          "name": "Realizar pedido",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MCIsInJvbGUiOiJDTElFTlRFIiwiaWF0IjoxNzgyNTY3ODk3LCJleHAiOjE3ODI2NTQyOTd9.dv1ghXmrL7bydNlhyHJdrCVRry_zCpeFyyKLgaxe2L8",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "\r\n    {\r\n    \"idUnidade\": 1,\r\n    \"idProduto\": 1,\r\n    \"quantidade\": 1, \r\n    \"canalPedido\": \"APP\"\r\n}\r\n\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/pedidos/realizar",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "pedidos",
+                "realizar"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Pedido com erro",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MDEiLCJyb2xlIjoiQ0xJRU5URSIsImlhdCI6MTc4MjY0OTY4OSwiZXhwIjoxNzgyNzM2MDg5fQ.Ti0dPhJ_THZHAdyscAmH9El9lOk8Iq_5oUJn52ZigUQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "  {\r\n    \"idUnidade\": 1,\r\n    \"idProduto\": 1,\r\n    \"quantidade\": 300, \r\n    \"canalPedido\": \"APP\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/pedidos/realizar",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "pedidos",
+                "realizar"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Fluxo de pagamento",
+      "item": [
+        {
+          "name": "Pagamento mock",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MDEiLCJyb2xlIjoiQ0xJRU5URSIsImlhdCI6MTc4MjY0OTY4OSwiZXhwIjoxNzgyNzM2MDg5fQ.Ti0dPhJ_THZHAdyscAmH9El9lOk8Iq_5oUJn52ZigUQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/pagamentos/2/pagar",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "pagamentos",
+                "2",
+                "pagar"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Pagamento existente",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MDEiLCJyb2xlIjoiQ0xJRU5URSIsImlhdCI6MTc4MjY0OTY4OSwiZXhwIjoxNzgyNzM2MDg5fQ.Ti0dPhJ_THZHAdyscAmH9El9lOk8Iq_5oUJn52ZigUQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/pagamentos/2/pagar",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "pagamentos",
+                "2",
+                "pagar"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
