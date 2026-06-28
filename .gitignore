@@ -33,7 +33,7 @@ build/
 .vscode/
 
 # Arquivo de propriedades com dados sensíveis 
-# src/main/resources/application.properties
+src/main/resources/application.properties
 
 # Compilação e Artefatos do Java
 target/
