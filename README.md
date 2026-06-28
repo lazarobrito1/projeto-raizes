@@ -2,13 +2,46 @@
 
 Este projeto consiste no desenvolvimento do back-end para uma rede de lanchonetes, com foco principal na automação do fluxo de pedidos e pagamentos.
 
-## Tecnologias e Justificativas de Escolha
+## 1. Pré-requisitos
+
+Para executar esta aplicação, você necessita dos seguintes componentes instalados:
+* **Linguagem:** Java (Versão 21)
+* **Framework Base:** Spring Boot 4.x
+* **Banco de Dados:** MySQL Server (Versão 8.0 ou superior)
+* **Dependências de Ecossistema (Maven):** 
+  * Spring Boot Starter Web (Exposição da API REST)
+  * Spring Boot Starter Data JPA (Persistência com Hibernate)
+  * Spring Boot Starter Security (Controle de acessos)
+  * Auth0 java-jwt (Geração e validação de tokens JWT)
+  * Springdoc-openapi-starter-webmvc-ui (Documentação de Contratos)
+
+## 2. Instalação e Configuração
+
+### Configuração de Variáveis de Ambiente
+O arquivo `application.properties` original foi mantido oculto por questões de segurança de dados. 
+1. Vá até a pasta `src/main/resources/`.
+2. Crie um arquivo chamado `application.properties`.
+3. Utilize como base o modelo e as chaves disponibilizadas no arquivo público `application.properties.example` preenchendo com suas credenciais locais do MySQL e sua assinatura do JWT.
+
+### Instalação de Dependências
+Para baixar as dependências do ecossistema mapeadas no arquivo `pom.xml`, abra o terminal na raiz do projeto e execute o comando:
+```bash
+./mvnw clean install
+```
+
+## 3. Banco de Dados e Migrations
+
+A criação das tabelas e o relacionamento do banco de dados relacional MySQL foram automatizados via Hibernate Provider do Spring Data. 
+* **Criação de Tabelas:** Ao inicializar a aplicação, a propriedade `spring.jpa.hibernate.ddl-auto=update` fará a varredura das classes da camada `Entity` e criará a estrutura física do banco de dados de forma automática.
+* **Dados Iniciais (Seeds):** A inserção de dados iniciais para testes da lanchonete (como categorias e produtos iniciais) ocorre de forma automática durante a primeira carga através do gerenciamento interno do ecossistema Spring.
+
+## 4. Tecnologias e Justificativas de Escolha
 
 * **Java 21 e Spring Boot 4:** A escolha do ecossistema Spring foi motivada pela robustez e facilidade de integração entre camadas. O uso do Spring Data JPA acelerou a persistência de dados, enquanto o Spring Security blindou a aplicação.
 * **MySQL:** Optou-se por um banco de dados relacional devido à natureza estruturada dos dados de pedidos, clientes e produtos, garantindo consistência e integridade por meio de chaves estrangeiras.
 * **JWT (JSON Web Token):** Utilizado para a autenticação e autorização dos usuários. Essa escolha garante o controle de acesso baseado em perfis, protegendo os endpoints sensíveis contra acessos não autorizados.
 
-## Detalhes da Implementação e Arquitetura
+## 5. Detalhes da Implementação e Arquitetura
 
 O projeto foi estruturado seguindo o padrão de divisão de responsabilidades em camadas, garantindo baixo acoplamento, alta coesão e facilidade de manutenção. Abaixo está a descrição detalhada e a justificativa para cada estrutura e pacote do sistema:
 
@@ -21,24 +54,20 @@ O projeto foi estruturado seguindo o padrão de divisão de responsabilidades em
 * **Controller (API):** Camada de exposição dos endpoints REST da aplicação. É responsável por receber as requisições HTTP, mapear as rotas, acionar as validações dos DTOs de entrada, delegar o processamento para a camada de Service correspondente e retornar o status HTTP adequado (como 201 Created ou 200 OK).
 * **Application (Classe Principal):** Contém a classe que possui o método main e carrega a anotação @SpringBootApplication. Ela funciona como o ponto de partida de todo o sistema, inicializando o servidor embutido Tomcat, varrendo os pacotes em busca de componentes (Component Scan) e subindo o ecossistema do Spring.
 
-## Como Executar a Aplicação
+## 6. Inicialização da API (Local)
 
-### Configuração de Variáveis de Ambiente
-O arquivo application.properties original foi mantido oculto por questões de segurança de dados. Para rodar o projeto, crie um arquivo chamado application.properties na pasta src/main/resources/ utilizando como base o modelo disponibilizado em application.properties.example.
-
-### Inicialização do Sistema
-Certifique-se de ter o ambiente Java e o banco de dados MySQL configurados e ativos na sua máquina. Você pode iniciar a API de duas formas:
+Certifique-se de ter o ambiente Java e o banco de dados MySQL ativos. Você pode iniciar a API de duas formas:
 
 * **Forma 1: Pelo Editor de Código (IDE)**
-  Abra o projeto na sua IDE de preferência (IntelliJ IDEA, Eclipse ou VS Code). Localize o arquivo principal da aplicação: ProjetobackendraizesApplication.java. Clique com o botão direito sobre o arquivo (ou use o atalho da IDE) e selecione a opção Run (ou clique no botão de reprodução/seta verde "Play" posicionado na parte superior do editor). A IDE compilará o projeto automaticamente e iniciará o servidor Tomcat embutido.
+  Abra o projeto na sua IDE de preferência (IntelliJ IDEA, Eclipse ou VS Code). Localize o arquivo principal da aplicação: `ProjetobackendraizesApplication.java`. Clique com o botão direito sobre o arquivo e selecione a opção **Run** (ou clique no botão de reprodução/seta verde "Play" posicionado na parte superior do editor). A IDE compilará o projeto automaticamente e iniciará o servidor Tomcat embutido.
 * **Forma 2: Pelo Terminal**
-  Abra o prompt de comando ou terminal na raiz do projeto e execute o comando do Maven Wrapper:
+  Abra o prompt de comando ou terminal na raiz do projeto e execute o comando:
   ```bash
   ./mvnw spring-boot:run
   ```
 
-### Documentação da API
-Após a inicialização (por qualquer um dos métodos acima), os endpoints e seus respectivos contratos podem ser visualizados, validados e testados localmente via Swagger na URL padrão do SpringDoc.
+## 7. Links e Execução de Testes Automatizados
 
-## Execução dos Testes
-O arquivo de coleção de testes está localizado na raiz do projeto. Para rodar os testes, faça a importação do arquivo diretamente no ambiente do Postman.
+* **Caminho da Coleção de Testes:** O arquivo contendo a suíte de testes automatizados encontra-se disponível na raiz deste repositório com o nome:  
+  `Sistema_Pedidos.postman_collection.json`
+* **Instruções de Execução:** Toda a validação dos contratos e endpoints expostos pela API foi documentada e testada através do software **Postman**. Para executar os cenários de testes, abra o Postman, clique na opção de importação (*Import*), selecione o arquivo JSON mencionado acima e execute a coleção de requisições contra o servidor local (`http://localhost:8080`).
