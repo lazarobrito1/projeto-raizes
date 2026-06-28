@@ -52,6 +52,7 @@ INSERT INTO estoque_unidade (id, quantidade, id_produto, id_unidade) VALUES
 (1, 50, 2, 2),
 (2, 30, 3, 3);
 
+```
 
 ## 4. Tecnologias e Justificativas de Escolha
 
