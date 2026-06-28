@@ -1,0 +1,15 @@
+# Nome da Aplicação Spring Boot
+spring.application.name=projetobackendraizes
+
+# Configurações do Banco de Dados MySQL
+spring.datasource.url=jdbc:mysql://localhost:3306/sistema_pedidos
+spring.datasource.username=root
+spring.datasource.password=INSIRA_SUA_SENHA_LOCAL_AQUI
+
+# Configurações de Inicialização do JPA/Hibernate
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+
+# Chave Secreta para Assinatura e Validação do Token JWT
+jwt.secret=INSIRA_UMA_CHAVE_JWT_SEGURA_AQUI
