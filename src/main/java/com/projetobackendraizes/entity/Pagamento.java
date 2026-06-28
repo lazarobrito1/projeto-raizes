@@ -19,7 +19,7 @@ public class Pagamento {
 
     private String statusPagamento;
     private BigDecimal valorPg;
-    private String metodoPg;
+
 
 
     /*
