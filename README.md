@@ -33,7 +33,25 @@ Para baixar as dependências do ecossistema mapeadas no arquivo `pom.xml`, abra 
 
 A criação das tabelas e o relacionamento do banco de dados relacional MySQL foram automatizados via Hibernate Provider do Spring Data. 
 * **Criação de Tabelas:** Ao inicializar a aplicação, a propriedade `spring.jpa.hibernate.ddl-auto=update` fará a varredura das classes da camada `Entity` e criará a estrutura física do banco de dados de forma automática.
-* **Dados Iniciais (Seeds):** A inserção de dados iniciais para testes da lanchonete (como categorias e produtos iniciais) ocorre de forma automática durante a primeira carga através do gerenciamento interno do ecossistema Spring.
+* **Dados Iniciais (Seeds):** A estrutura das tabelas é gerada dinamicamente pelo Spring Data JPA através do Hibernate (`ddl-auto=update`). Contudo, para que o sistema possua registros para testes e validação dos cenários, é necessário alimentar o banco de dados manualmente.
+Execute as queries SQL abaixo no seu gerenciador de banco de dados (ex: MySQL Workbench) para realizar a carga inicial:
+
+```sql
+-- 1. Cadastrar as Unidades
+INSERT INTO unidade (id_unidade, nome_da_unidade) VALUES 
+(1, 'Raízes Nordestinas - Filial'),
+(2, 'Raízes Nordestinas - Filial Shopping');
+
+-- 2. Cadastrar os Produtos do Cardápio
+INSERT INTO produto (id_produto, nome, preco) VALUES 
+(1, 'Buchada de Bode', 35.00),
+(2, 'Tapioca com Carne Seca', 15.00);
+
+-- 3. Vincular os Produtos ao Estoque de uma Unidade
+INSERT INTO estoque_unidade (id, quantidade, id_produto, id_unidade) VALUES 
+(1, 50, 2, 2),
+(2, 30, 3, 3);
+
 
 ## 4. Tecnologias e Justificativas de Escolha
 
@@ -69,5 +87,5 @@ Certifique-se de ter o ambiente Java e o banco de dados MySQL ativos. Você pode
 ## 7. Links e Execução de Testes Automatizados
 
 * **Caminho da Coleção de Testes:** O arquivo contendo a suíte de testes automatizados encontra-se disponível na raiz deste repositório com o nome:  
-  `Sistema_Pedidos.postman_collection.json`
+  `Sistema_Pedidos.postman_collection.json'
 * **Instruções de Execução:** Toda a validação dos contratos e endpoints expostos pela API foi documentada e testada através do software **Postman**. Para executar os cenários de testes, abra o Postman, clique na opção de importação (*Import*), selecione o arquivo JSON mencionado acima e execute a coleção de requisições contra o servidor local (`http://localhost:8080`).
